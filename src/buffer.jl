@@ -88,3 +88,12 @@ function _get_entry(p, v, d)
     end
     return o
 end
+
+function _buffer_subset(b, s)
+
+    delims = findall(b .== UInt8('\t'))
+    return vcat(collect.(UnitRange.([1;delims], [delims .- 1; length(b)])[s])...)
+end
+
+
+

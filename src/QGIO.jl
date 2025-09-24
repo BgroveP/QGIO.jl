@@ -5,6 +5,7 @@ using CSV
 using DataFrames
 using GZip
 using PrettyTables
+using Base.Threads
 
 # Constants
 READLINE_BUFFER_SIZE = 10000
