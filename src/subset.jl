@@ -48,7 +48,7 @@ function subset(inpath, outpath; samples::Vector{String}=[""], loci::DataFrame=D
             end
 
             notendofffile = QGIO.readline!(infile, buffer)
-            global writeturn = writeturn == nthreads() ? 1 : writeturn + 1
+            writeturn = writeturn == nthreads() ? 1 : writeturn + 1
         end
 
     end
