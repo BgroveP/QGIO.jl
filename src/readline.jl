@@ -21,6 +21,20 @@ function readline!(s::GZip.GZipStream, b::Vector{UInt8})
     return false
 end
 
+# Emre observed the following error:
+#Stacktrace:
+#[1] macro expansion
+#   @ ./iostream.jl:43 [inlined]
+#[2] readline!(s::IOStream, b::Vector{UInt8})
+#   @ QGIO ~/.julia/packages/QGIO/pLEiG/src/readline.jl:28
+#[3] loci(path::String)
+#   @ QGIO ~/.julia/packages/QGIO/pLEiG/src/loci.jl:22
+#[4] haplotypes(path::String; loci::DataFrames.DataFrame, ancestries::DataFrames.DataFrame, omits::DataFrames.DataFrame)
+#   @ QGIO ~/.julia/packages/QGIO/pLEiG/src/haplotypes.jl:16
+#[5] haplotypes(path::String)
+#   @ QGIO ~/.julia/packages/QGIO/pLEiG/src/haplotypes.jl:2
+#[6] top-level scope
+#   @ REPL[1583]:1
 function readline!(s::IOStream, b::Vector{UInt8})
     d::UInt8 = UInt8('\n')
     p::Int = 1
